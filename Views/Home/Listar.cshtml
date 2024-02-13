@@ -1,0 +1,39 @@
+@model IEnumerable<MinhaPrimeiraAplicacaoWeb.Models.ProdutoModel>
+<h1>Listagem dos produtos</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Criar">Criar um novo Produto</a>
+</p>
+<table class="table table-striped table-site">
+    <thead>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Decrição</th>
+        <th>Preço</th>
+        <th>Está Ativo</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.Id)</td>
+                <td>@Html.DisplayFor(x => item.Nome)</td>
+                <td>@Html.DisplayFor(x => item.Descricao)</td>
+                <td>@Html.DisplayFor(x => item.Preco)</td>
+                <td>@Html.DisplayFor(x => item.EstaAtivo)</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">
+                        Editar
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Deletar" asp-route-id="@item.Id">
+                        Deletar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
